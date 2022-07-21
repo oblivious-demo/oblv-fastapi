@@ -1,0 +1,40 @@
+auth:
+- auth_name: general
+  auth_type: signed_headers
+base_image: oblv_ubuntu_18_04_proxy_python_3_8
+meta:
+  author: OBLV Demo
+  author_email: hello@oblivious.ai
+  git: https://github.com/oblivious-demo/oblv-fastapi.git
+  version: 0.0.1
+paths:
+- access: querier
+  path: /hello
+  short_description: Returns name and role
+- access: querier
+  path: /settings
+  short_description: 'Returns the runtime.yaml as json '
+- access: querier
+  path: /call
+  short_description: Test outbound calls
+- access: querier
+  path: /submit_values
+  short_description: Submit value for Yoa's Millionaire Problem
+- access: querier
+  path: /compare
+  short_description: Get result of Yao's Millionaire Problem
+roles:
+- role_auth: general
+  role_cardinality: 2
+  role_description: An example querier role
+  role_name: querier
+traffic:
+  inbound:
+  - name: main
+    port: 80
+    type: tcp
+  outbound:
+  - domain: example.com
+    name: example
+    port: 443
+    type: tcp
