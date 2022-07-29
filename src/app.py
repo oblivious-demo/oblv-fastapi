@@ -8,7 +8,7 @@ import settings
 app = FastAPI()
 
 """
-demo: User Details
+demo: User Details.
 
 Access control is managed by the OBLV proxy.
 The user name and role of the requester is 
